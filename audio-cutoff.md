@@ -1,7 +1,12 @@
 # Jamesdsp / Pipewire randomly cut off / crackling
-This happened to me on freshly install Fedora 43 with updated 6.17.7 kernel
+ System Info:
+ - Distro: Fedora Linux 42 (KDE Plasma Desktop Edition)
+ - Kernel: 6.17.7
 
-1. Copy /usr/share/pipewire/pipewire.conf to /etc/pipewire/pipewire.conf
+## Fix:
+### Step 1:
+Copy /usr/share/pipewire/pipewire.conf to /etc/pipewire/pipewire.conf
+
 And then edit these into the copied file
 ```
     default.clock.quantum       = 2048 #1024
@@ -12,6 +17,6 @@ And then edit these into the copied file
 > Be warned, that those lines prevent underruns by highering the output latency alot. 
 https://github.com/Audio4Linux/JDSP4Linux/issues/47#issuecomment-2565036420
 
-2. Install realtime-setup and add your account into realtime group with
-
+### Step 2:
+Install realtime-setup and add your user into realtime group with:
 ```sudo usermod -aG realtime <user>```
